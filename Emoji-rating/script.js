@@ -1,0 +1,23 @@
+const starsEl=document.querySelectorAll(".fa-star") 
+const emojisEl=document.querySelectorAll(".fa-regular")
+const colors=["red","yellow","orange","blue","green"];
+
+starsEl.forEach((starEl,index)=>{
+    starEl.addEventListener("click",()=>{
+        updateRating(index);
+    });
+});
+
+function updateRating(index){
+    starsEl.forEach((starEl,idx)=>{
+        if(idx < index + 1){
+            starEl.classList.add("active");
+        } else{
+            starEl.classList.remove("active");
+        }
+    });
+    emojisEl.forEach((emoji)=>{
+        emoji.style.transform=`translateX(-${index *100}%)`;
+        emoji.style.color=colors[index];
+    })
+};  
